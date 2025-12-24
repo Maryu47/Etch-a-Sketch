@@ -13,7 +13,24 @@ body {
   background-color: lightgray;
 }
 
+.controls {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.controls button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #888;
+  background: white;
+  cursor: pointer;
+}
+
 .container {
+  --cells-per-side: 16;
   /* keep the container square and responsive */
   width: min(720px, 90vmin);
   height: min(720px, 90vmin);
@@ -26,11 +43,10 @@ body {
 }
 
 .cell {
-  /* one-sixteenth of the container width per row (16 columns)
-     using flex-basis to make items line up in rows */
+  /* each cell is 1 / var(--cells-per-side) of the container */
   border: 1px solid #ccc;
-  flex: 0 0 calc(100% / 16);
-  height: calc(100% / 16);
+  flex: 0 0 calc(100% / var(--cells-per-side));
+  height: calc(100% / var(--cells-per-side));
   box-sizing: border-box;
 }
 
