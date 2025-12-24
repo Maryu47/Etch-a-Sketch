@@ -29,6 +29,11 @@ body {
   cursor: pointer;
 }
 
+/* space between adjacent controls */
+.controls button + button {
+  margin-left: 8px;
+}
+
 .container {
   --cells-per-side: 16;
   /* keep the container square and responsive */

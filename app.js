@@ -32,5 +32,11 @@ btn.addEventListener('click', () => {
     createGrid(newSize);
 });
 
+// clear current drawing by removing 'active' class from all cells
+const clearBtn = document.getElementById('clear-btn');
+clearBtn.addEventListener('click', () => {
+    document.querySelectorAll('.cell.active').forEach(cell => cell.classList.remove('active'));
+});
+
 // initial grid
 createGrid(16);
