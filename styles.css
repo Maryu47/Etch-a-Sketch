@@ -11,6 +11,9 @@ body {
   height: 100vh;
   margin: 0;
   background-color: lightgray;
+  /* prevent text selection while click-and-drag drawing */
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .controls {

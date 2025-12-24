@@ -1,6 +1,12 @@
 const container = document.querySelector('.container');
 const btn = document.getElementById('resize-btn');
 
+// track whether the mouse button is currently pressed (for click-and-drag drawing)
+let isDrawing = false;
+// when the mouse is pressed anywhere, start drawing; when released, stop
+document.addEventListener('mousedown', () => { isDrawing = true; });
+document.addEventListener('mouseup', () => { isDrawing = false; });
+
 function createGrid(size) {
     // clear existing cells
     container.innerHTML = '';
@@ -12,9 +18,15 @@ function createGrid(size) {
         const cell = document.createElement('div');
         cell.classList.add('cell');
 
-        // simple hover / draw effect: add 'active' class when mouse enters
-        cell.addEventListener('mouseenter', () => {
+        // click-and-drag drawing:
+        // draw on mousedown and when entering a cell while the mouse is pressed
+        cell.addEventListener('mousedown', (e) => {
+            e.preventDefault();
             cell.classList.add('active');
+            isDrawing = true;
+        });
+        cell.addEventListener('mouseenter', () => {
+            if (isDrawing) cell.classList.add('active');
         });
 
         container.appendChild(cell);
